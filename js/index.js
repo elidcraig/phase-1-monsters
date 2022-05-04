@@ -10,7 +10,39 @@
 
 // At the end of the list of monsters, show a button. When clicked, the button should load the next 50 monsters and show them.
 
+const createMonsterContainer = document.querySelector('div#create-monster')
 
+const renderFormElement = () => {
+    const formElement = document.createElement('form')
+    formElement.id = 'create-new-monster'
+
+    const nameInput = document.createElement('input')
+    const ageInput = document.createElement('input')
+    const descriptionInput = document.createElement('input')
+    const submitInput = document.createElement('input')
+
+    nameInput.type = 'text'
+    nameInput.name = 'name'
+    nameInput.placeholder = 'Name...'
+    ageInput.type = 'text'
+    ageInput.name = 'age'
+    ageInput.placeholder = 'Age...'
+    descriptionInput.type = 'text'
+    descriptionInput.name = 'description'
+    descriptionInput.placeholder = 'Description...'
+    submitInput.type = 'submit'
+    submitInput.value = 'Create'
+
+    formElement.appendChild(nameInput)
+    formElement.appendChild(ageInput)
+    formElement.appendChild(descriptionInput)
+    formElement.appendChild(submitInput)
+
+    createMonsterContainer.appendChild(formElement)
+
+}
+
+renderFormElement()
 
 fetch('http://localhost:3000/monsters')
     .then(resp => resp.json())
